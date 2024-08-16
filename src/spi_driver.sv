@@ -34,6 +34,7 @@ class spi_driver extends uvm_driver#(spi_seq_item);
     super.run_phase(phase);
     forever begin
       spi_seq_item trans;
+        #10;
       seq_item_port.get_next_item(trans);
       uvm_report_info("SPI_DRIVER ", $psprintf("Got Transaction %s",trans.convert2string()));
       //---------------------------------------

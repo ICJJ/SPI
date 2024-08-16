@@ -23,12 +23,12 @@ class spi_test extends uvm_test;
     super.build_phase(phase);
     
     env=spi_environment::type_id::create("env", this);
-    uvm_config_db#(virtual spi_interface)::set(this, "env", "vif", vif);
     
     if(! uvm_config_db#(virtual spi_interface)::get(this, "", "vif", vif)) 
       begin
         `uvm_error("build_phase","Test virtual interface failed")
       end
+    uvm_config_db#(virtual spi_interface)::set(this, "env", "vif", vif);
   endfunction
   
   //---------------------------------------

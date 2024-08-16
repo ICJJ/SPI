@@ -27,13 +27,14 @@ class spi_environment extends uvm_env;
     
     agt=spi_agent::type_id::create("agt", this);
     scb=spi_scoreboard::type_id::create("scb", this);
-    uvm_config_db#(virtual spi_interface)::set(this, "agt", "vif", vif);
-    uvm_config_db#(virtual spi_interface)::set(this, "scb", "vif", vif);
+
     
     if(! uvm_config_db#(virtual spi_interface)::get(this, "", "vif", vif)) 
       begin
         `uvm_error("build_phase","Environment virtual interface failed")
       end
+    uvm_config_db#(virtual spi_interface)::set(this, "agt", "vif", vif);
+    uvm_config_db#(virtual spi_interface)::set(this, "scb", "vif", vif);
   endfunction
     
   //---------------------------------------
